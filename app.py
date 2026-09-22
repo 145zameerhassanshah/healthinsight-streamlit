@@ -13,7 +13,28 @@ st.set_page_config(
 
 
 # --------------------------------------------------
-# Application Header
+# Sidebar Navigation
+# --------------------------------------------------
+
+st.sidebar.title("🏥 HealthInsight")
+
+st.sidebar.caption("Healthcare Analytics & AI Learning Platform")
+
+page = st.sidebar.selectbox(
+    "Navigate to",
+    [
+        "Home",
+        "Patient Information",
+        "Healthcare Analytics",
+        "AI / ML",
+        "Datasets",
+        "About"
+    ]
+)
+
+
+# --------------------------------------------------
+# Main Application
 # --------------------------------------------------
 
 st.title("🏥 HealthInsight")
@@ -26,87 +47,90 @@ st.write(
 
 
 # --------------------------------------------------
-# About the Application
+# Current Page
 # --------------------------------------------------
 
-st.subheader("About HealthInsight")
+st.subheader(f"Current Section: {page}")
 
-st.markdown("""
-HealthInsight is a learning-focused healthcare analytics platform
-designed to demonstrate how Python, data analytics, and artificial
-intelligence can be combined in a web application.
+if page == "Home":
 
-### Planned Learning Modules
+    st.markdown("""
+    ### Welcome to HealthInsight
 
-- 👤 Patient Information
-- 📊 Healthcare Data Analytics
-- 📈 Interactive Data Visualization
-- 🤖 Machine-Learning Risk Prediction
-- 📁 Dataset Exploration
-- 📋 Model Performance Analysis
-""")
+    HealthInsight is a learning-focused healthcare analytics
+    platform designed to demonstrate Python, data analytics,
+    visualization, and artificial intelligence concepts.
+    """)
 
-
-# --------------------------------------------------
-# Healthcare Data & AI Workflow
-# --------------------------------------------------
-
-st.header("Healthcare Data & AI Workflow")
-
-st.markdown("""
-**HealthInsight learning workflow:**
-
-`Data → Cleaning → Analysis → Visualization → Machine Learning → Results`
-""")
+    st.info(
+        "Select a section from the sidebar to explore the platform."
+    )
 
 
-# --------------------------------------------------
-# Current Learning Stage
-# --------------------------------------------------
+elif page == "Patient Information":
 
-st.subheader("Current Learning Stage")
+    st.markdown("""
+    ### Patient Information
 
-st.write(
-    "In this first stage, we are learning the Streamlit framework, "
-    "its basic execution model, and static content rendering."
-)
+    This section will later contain structured patient information
+    and healthcare-related data.
+    """)
 
-
-# --------------------------------------------------
-# System Status
-# --------------------------------------------------
-
-st.header("System Status")
-
-st.success("Streamlit foundation initialized successfully.")
-
-st.info(
-    "No patient data or machine-learning model is being processed "
-    "in this foundation stage."
-)
-
-st.warning(
-    "This project is intended for educational and demonstration "
-    "purposes only."
-)
+    st.warning(
+        "Patient data functionality will be added in a later stage."
+    )
 
 
-# --------------------------------------------------
-# Educational Notice
-# --------------------------------------------------
+elif page == "Healthcare Analytics":
 
-st.divider()
+    st.markdown("""
+    ### Healthcare Analytics
 
-st.markdown("""
-> **Educational Notice:**  
-> HealthInsight is a learning and demonstration project. It does
-> not provide medical diagnosis, treatment recommendations, or
-> clinical decision-making.
-""")
+    This section will later contain healthcare data analysis,
+    statistics, and visualizations.
+    """)
+
+    st.info(
+        "Analytics functionality will be developed in future tasks."
+    )
 
 
-# --------------------------------------------------
-# Footer
-# --------------------------------------------------
+elif page == "AI / ML":
 
-st.caption("Built with Python + Streamlit")
+    st.markdown("""
+    ### Artificial Intelligence & Machine Learning
+
+    This section will eventually contain educational machine-learning
+    workflows and model predictions.
+    """)
+
+    st.info(
+        "Machine-learning functionality will be introduced later."
+    )
+
+
+elif page == "Datasets":
+
+    st.markdown("""
+    ### Dataset Explorer
+
+    This section will eventually allow healthcare datasets
+    to be explored and analyzed.
+    """)
+
+    st.info(
+        "Dataset functionality will be added in a later stage."
+    )
+
+
+elif page == "About":
+
+    st.markdown("""
+    ### About HealthInsight
+
+    HealthInsight is an educational project for learning how
+    Python and Streamlit can be used to build healthcare
+    analytics and AI applications.
+    """)
+
+    st.caption("Built with Python + Streamlit")
