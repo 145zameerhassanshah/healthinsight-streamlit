@@ -2,579 +2,181 @@
 
 **Healthcare Analytics & AI Learning Platform**
 
-HealthInsight is a progressive Streamlit-based healthcare analytics and artificial intelligence learning project.
+HealthInsight is a progressive Streamlit project developed during my AI Internship. Instead of creating separate applications for every task, new Streamlit, Python, data analytics, and AI concepts are gradually integrated into one healthcare-themed application.
 
-The project is being developed incrementally as part of the AI Internship learning tasks. Each stage focuses on understanding specific Streamlit, Python, data analytics, and machine-learning concepts before integrating them into a more complete healthcare application.
-
-The objective is not only to complete individual internship requirements, but also to progressively develop those requirements into a structured, maintainable, and portfolio-ready application.
-
-> **Educational Notice:** HealthInsight is developed for educational and demonstration purposes. It does not provide medical diagnosis, treatment recommendations, or clinical decision support.
+> **Educational Notice:** HealthInsight is for learning and demonstration only. It does not provide medical diagnosis, treatment recommendations, or clinical decision support.
 
 ---
 
-# 1. Project Objective
+## 🎯 Project Objective
 
-The project follows a learning-by-building approach.
-
-Instead of creating isolated examples for every Streamlit concept, the concepts are gradually integrated into one healthcare application.
-
-The development path is:
+The goal is to learn concepts practically and gradually develop a portfolio-ready application.
 
 ```text
 Streamlit Fundamentals
         ↓
-Application Layout
+Layout & Navigation
         ↓
-Navigation
+Interactive Widgets
         ↓
-Input Widgets
+Risk Score Calculator
         ↓
-Forms & Validation
-        ↓
-Healthcare Data
-        ↓
-Data Visualization
-        ↓
-Session State
-        ↓
-Dataset Upload
+Data & Visualization
         ↓
 Machine Learning
-        ↓
-Model Evaluation
-        ↓
-Performance & Caching
-        ↓
-Professional Healthcare Analytics Application
 ```
 
 ---
 
-# 2. Technology Stack
-
-## Current
+## 🛠 Technology Stack
 
 * Python
 * Streamlit
 * VS Code
-* Python Virtual Environment (`venv`)
+* Python Virtual Environment
 * Git
 * GitHub
+* PowerShell
 
-## Planned
-
-As the project progresses, appropriate technologies may include:
-
-* Pandas
-* NumPy
-* Matplotlib
-* Plotly
-* Scikit-learn
-* Joblib
-* CSV/structured healthcare datasets
-* Machine-learning models
-
-Libraries will be introduced only when required by the corresponding learning stage.
+Future stages may introduce Pandas, NumPy, Matplotlib, Plotly, and Scikit-learn.
 
 ---
 
-# 3. Development Environment
+## 🚀 Run the Application
 
-The application is being developed locally using VS Code.
-
-A Python virtual environment is used to isolate project dependencies.
-
-## Create Virtual Environment
-
-```bash
-python -m venv .venv
-```
-
-## Activate on Windows PowerShell
+Create and activate the environment:
 
 ```powershell
+python -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-## Install Streamlit
+Install Streamlit:
 
-```bash
+```powershell
 python -m pip install streamlit
 ```
 
-## Verify Installation
+Run HealthInsight:
 
-```bash
-streamlit --version
-```
-
-## Run Application
-
-```bash
+```powershell
 streamlit run app.py
 ```
 
-The application is normally available locally at:
+---
 
-```text
-http://localhost:8501
-```
+##  Streamlit Foundation
+
+The first stage introduced Streamlit fundamentals, including:
+
+* `st.set_page_config()`
+* `st.title()`
+* `st.header()`
+* `st.subheader()`
+* `st.write()`
+* `st.text()`
+* `st.markdown()`
+* `st.caption()`
+* `st.info()`
+* `st.success()`
+* `st.warning()`
+* `st.error()`
+
+This stage also introduced Streamlit's top-to-bottom script execution and rerun model.
 
 ---
 
-# 4. Git Workflow
+## 🧭 Layout & Navigation
 
-Feature-based Git development is being used so that each learning stage can be developed and tracked separately.
+HealthInsight was extended with:
 
-Current/planned structure:
+* `st.sidebar`
+* Sidebar navigation
+* `st.selectbox()`
+* Conditional page rendering
+* Multiple application sections
 
-```text
-main
-│
-├── feature/streamlit-foundation
-│
-├── feature/layout-navigation
-│
-├── feature/input-widgets
-│
-├── feature/forms-validation
-│
-├── feature/healthcare-data
-│
-├── feature/data-visualization
-│
-├── feature/session-state
-│
-├── feature/file-upload
-│
-├── feature/ml-prediction
-│
-├── feature/model-performance
-│
-├── feature/error-handling
-│
-├── feature/caching
-│
-└── feature/final-polish
-```
+Current navigation includes:
 
-The purpose of this workflow is to keep individual learning stages traceable while allowing the application to grow incrementally.
+* Home
+* Risk Score Calculator
+* Patient Information
+* Healthcare Analytics
+* AI / ML
+* Datasets
+* About
 
 ---
 
+## 🩺 Demo Risk Score Calculator
+
+The latest stage explores Streamlit layouts, buttons, sliders, and text inputs.
+
+Implemented components:
+
+* `st.container()` for grouping inputs
+* `st.columns()` for two-column layout
+* `st.slider()` for age
+* `st.slider()` for systolic blood pressure
+* `st.slider()` for glucose level
+* `st.selectbox()` for gender
+* `st.text_input()` for optional reference ID
+* `st.button()` for calculation
+* `st.metric()` for displaying the result
+
+The calculator uses simple Python conditional logic to generate an educational demo score from `0–100`.
+
+Gender is included as an interactive input but is not assigned arbitrary medical risk points.
+
+> The score is a programming demonstration and is not a clinically validated risk assessment.
 
 ---
 
-# 6. Task 46 Learning Objectives
+## 🧪 Testing
 
-The following concepts were studied and implemented:
-
-* What Streamlit is
-* Why Streamlit is useful
-* Streamlit's role in AI/ML applications
-* Installing Streamlit
-* Importing Streamlit
-* Streamlit alias convention
-* Basic execution model
-* Script rerun concept
-* Static content
-* Titles
-* Headers
-* Subheaders
-* Text rendering
-* Markdown rendering
-* Status messages
-* Basic page configuration
-
----
-
-# 7. Concepts Implemented
-
-## Importing Streamlit
-
-```python
-import streamlit as st
-```
-
-Breakdown:
-
-* `import` loads a Python module/package.
-* `streamlit` is the framework being imported.
-* `as` creates an alias.
-* `st` is the conventional alias used for Streamlit.
-
-This allows Streamlit functions to be accessed using syntax such as:
-
-```python
-st.title()
-```
-
----
-
-# 8. Page Configuration
-
-Implemented:
-
-```python
-st.set_page_config()
-```
-
-Used to configure application-level page properties such as:
-
-* Browser page title
-* Page icon
-* Layout mode
+The application was tested locally with multiple input values.
 
 Example:
 
-```python
-st.set_page_config(
-    page_title="HealthInsight",
-    page_icon="🏥",
-    layout="wide"
-)
+```text
+Age:             40
+Blood Pressure:  120
+Glucose:         100
+
+Demo Risk Score: 15/100
 ```
+
+Required screenshots of the calculator and its output were also captured for internship submission.
 
 ---
 
-# 9. Text and Heading Components
+## 🌿 Git Workflow
 
-The following Streamlit components were studied:
-
-```python
-st.title()
-st.header()
-st.subheader()
-st.write()
-st.text()
-st.markdown()
-st.caption()
-```
-
-## `st.title()`
-
-Used for the primary application title.
-
-## `st.header()`
-
-Used for major sections.
-
-## `st.subheader()`
-
-Used for subsections.
-
-## `st.write()`
-
-General-purpose Streamlit output function capable of displaying many types of Python objects.
-
-## `st.text()`
-
-Displays plain text.
-
-A practical comparison demonstrated that Markdown-style formatting passed to `st.text()` remains plain text.
-
-## `st.markdown()`
-
-Used to render Markdown-formatted content including:
-
-* headings
-* bold text
-* italic text
-* lists
-* blockquotes
-* inline code
-
----
-
-# 10. Streamlit Execution Model
-
-A key objective of this task was understanding how Streamlit executes an application.
-
-Conceptually:
+Development follows a feature-based workflow:
 
 ```text
-app.py
-   ↓
-Streamlit executes the Python script
-   ↓
-Streamlit commands generate UI elements
-   ↓
-Application is rendered in the browser
+main
+ ├── feature/streamlit-foundation
+ ├── feature/layout-navigation
+ └── feature/risk-score-calculator
 ```
 
-Streamlit generally follows a script rerun model.
-
-When relevant application state or user interaction changes, the script may be rerun from top to bottom.
-
-Understanding this behavior is important for later concepts such as:
-
-* widgets
-* forms
-* callbacks
-* Session State
-* caching
-* model loading
-
----
-
-# 11. `st.write()` vs `st.text()`
-
-A practical experiment was performed.
-
-```python
-st.write("**st.write()** can interpret Markdown formatting.")
-
-st.text("**st.text()** displays this as plain text.")
-```
-
-The experiment demonstrated the difference between flexible Streamlit output and plain-text output.
-
----
-
-# 12. Markdown Experiment
-
-Markdown formatting was tested using:
-
-```python
-st.markdown()
-```
-
-Concepts included:
-
-* headings
-* bold
-* italic
-* numbered lists
-* blockquotes
-* inline code
-* multiline strings
-
-Example workflow displayed in the application:
+Workflow:
 
 ```text
-Data → Cleaning → Analysis → Machine Learning → Results
+Feature Branch → Development → Testing
+→ Documentation → Commit → Push
+→ Pull Request → Merge
 ```
 
 ---
 
-# 13. Streamlit Status Messages
 
-The following UI feedback components were explored:
 
-```python
-st.info()
-st.success()
-st.warning()
-st.error()
-```
+## 🔮 Future Direction
 
-Their conceptual purposes are:
+HealthInsight will continue to evolve according to upcoming internship tasks.
 
-* `st.info()` — general information
-* `st.success()` — successful operation
-* `st.warning()` — caution or potential issue
-* `st.error()` — error-style user-facing message
+Planned areas include forms, validation, healthcare datasets, visualization, file uploads, Session State, machine learning, model evaluation, caching, and application optimization.
 
-An important distinction was also learned:
-
-```text
-st.error()
-```
-
-displays an error message in the interface but does not itself create a Python exception.
-
----
-
-# 14. Healthcare Application Foundation
-
-Instead of building a generic "Hello World" application only, the minimum Streamlit requirements were extended into the foundation of:
-
-## HealthInsight
-
-**Healthcare Risk & Analytics Platform**
-
-Current application content includes:
-
-* Application introduction
-* Healthcare context
-* Planned learning modules
-* Healthcare data/AI workflow
-* Current learning stage
-* System status
-* Educational notice
-* Application footer
-
-This provides a foundation that can be extended in later tasks without rebuilding the project from scratch.
-
----
-
-# 15. Current Application Scope
-
-The current foundation intentionally does **not** contain:
-
-* Real patient records
-* Medical diagnosis
-* Machine-learning prediction
-* Dataset processing
-* Database integration
-* Authentication
-* Clinical decision support
-
-These features are outside the scope of the introductory Streamlit task.
-
----
-
-
-
-# 17. Current Git Repository
-
-Repository:
-
-`healthinsight-streamlit`
-
-Primary development uses Git feature branches so that each learning stage remains traceable.
-
-Completed foundation work is associated with:
-
-```text
-feature/streamlit-foundation
-```
-
----
-
-# 18. Current Project Structure
-
-At the foundation stage, the project is intentionally kept simple.
-
-```text
-task_46_Streamlit_Learning/
-│
-├── .venv/
-├── .gitignore
-└── app.py
-```
-
-`.venv/` is excluded from version control.
-
-The structure will be expanded only when application complexity requires it.
-
-Future structure may evolve toward:
-
-```text
-healthinsight-streamlit/
-│
-├── app.py
-├── requirements.txt
-├── README.md
-├── pages/
-├── data/
-├── models/
-├── utils/
-└── assets/
-```
-
----
-
-# 19. Development Philosophy
-
-The project follows four principles:
-
-### Learn
-
-Understand the concept, syntax, parameters, purpose, execution behavior, and practical role.
-
-### Implement
-
-Use the concept in a small working example.
-
-### Integrate
-
-Apply the concept meaningfully to HealthInsight.
-
-### Track
-
-Maintain progress through Git branches, commits, README documentation, and requirement tracking.
-
-Therefore:
-
-```text
-Concept
-   ↓
-Syntax
-   ↓
-Experiment
-   ↓
-Healthcare Implementation
-   ↓
-Testing
-   ↓
-Git Commit
-   ↓
-Documentation
-```
-
----
-
-# 20. Next Development Stage
-
-## Streamlit Layout & Navigation
-
-Planned next concepts include:
-
-```python
-st.sidebar
-st.columns()
-st.container()
-st.expander()
-st.tabs()
-```
-
-The objective is to transform the static foundation into a more structured application interface.
-
-Planned conceptual layout:
-
-```text
-┌────────────────┬─────────────────────────────┐
-│                │                             │
-│   Navigation   │       HealthInsight         │
-│                │                             │
-│   Home         │       Main Content          │
-│   Patients     │                             │
-│   Analytics    │                             │
-│   AI / ML      │                             │
-│   Datasets     │                             │
-│   About        │                             │
-│                │                             │
-└────────────────┴─────────────────────────────┘
-```
-
-The application will continue to extend the existing foundation rather than replacing it with unrelated examples.
-
----
-
-# 21. Planned Long-Term Direction
-
-HealthInsight may eventually demonstrate an educational workflow such as:
-
-```text
-Healthcare Dataset
-        ↓
-Data Validation
-        ↓
-Data Cleaning
-        ↓
-Exploratory Analysis
-        ↓
-Visualization
-        ↓
-Feature Processing
-        ↓
-Machine-Learning Model
-        ↓
-Model Evaluation
-        ↓
-Prediction Interface
-        ↓
-Streamlit Dashboard
-```
-
+The objective is to keep **learning, implementing, testing, documenting, and integrating** each concept into the same evolving project.
