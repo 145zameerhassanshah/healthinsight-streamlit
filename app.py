@@ -1,6 +1,26 @@
 import streamlit as st
 import pandas as pd
 
+
+# --------------------------------------------------
+# Session State Initialization
+# --------------------------------------------------
+
+if "risk_threshold" not in st.session_state:
+    st.session_state.risk_threshold = 0
+
+if "selected_patient" not in st.session_state:
+    st.session_state.selected_patient = "P001"
+
+
+# --------------------------------------------------
+# Reset Callback
+# --------------------------------------------------
+
+def reset_filters():
+
+    st.session_state.risk_threshold = 0
+    st.session_state.selected_patient = "P001"
 # --------------------------------------------------
 # Page Configuration
 # --------------------------------------------------
@@ -10,7 +30,6 @@ st.set_page_config(
     page_icon="🏥",
     layout="wide"
 )
-
 
 # --------------------------------------------------
 # Sidebar Navigation
@@ -236,14 +255,15 @@ elif page == "Healthcare Analytics":
     st.markdown("""
     ### 📊 Clinical Metrics Dashboard
 
-    Explore synthetic patient metrics and analyze vital-sign
-    trends across multiple visits.
+    Explore synthetic patient metrics, apply filters,
+    and analyze vital-sign trends across multiple visits.
     """)
 
     st.info(
         "This dashboard uses synthetic data for educational "
         "and demonstration purposes only."
     )
+
 
     # --------------------------------------------------
     # Patient Summary Data
@@ -257,7 +277,41 @@ elif page == "Healthcare Analytics":
         "Readmission Risk Score": [10, 20, 35, 60, 75]
     }
 
+
     patient_df = pd.DataFrame(patient_data)
+
+
+    # --------------------------------------------------
+    # Risk Threshold Filter
+    # --------------------------------------------------
+
+    st.subheader("🎚 Risk Score Filter")
+
+
+    risk_threshold = st.slider(
+        "Minimum Demo Readmission Risk Score",
+        min_value=0,
+        max_value=100,
+        value=st.session_state.risk_threshold,
+        step=5,
+        key="risk_threshold"
+    )
+
+
+    # --------------------------------------------------
+    # Filter Patient Data
+    # --------------------------------------------------
+
+    filtered_patient_df = patient_df[
+        patient_df["Readmission Risk Score"] >= risk_threshold
+    ]
+
+
+    st.metric(
+        "Patients Matching Filter",
+        len(filtered_patient_df)
+    )
+
 
     # --------------------------------------------------
     # Clinical Metrics Table
@@ -265,47 +319,62 @@ elif page == "Healthcare Analytics":
 
     st.subheader("Patient Clinical Metrics")
 
-    st.dataframe(
-        patient_df,
-        use_container_width=True,
-        hide_index=True
-    )
+
+    if filtered_patient_df.empty:
+
+        st.warning(
+            "No patients match the selected threshold."
+        )
+
+    else:
+
+        st.dataframe(
+            filtered_patient_df,
+            use_container_width=True,
+            hide_index=True
+        )
+
 
     st.divider()
+
 
     # --------------------------------------------------
     # Patient Visit History
     # --------------------------------------------------
 
-    st.subheader("Patient Vital Sign Trend")
+    st.subheader("📈 Patient Vital Sign Trend")
+
 
     visit_data = {
+
         "Patient ID": [
-            "P001", "P001", "P001", "P001", "P001",
-            "P002", "P002", "P002", "P002", "P002",
-            "P003", "P003", "P003", "P003", "P003",
-            "P004", "P004", "P004", "P004", "P004",
-            "P005", "P005", "P005", "P005", "P005"
+            "P001","P001","P001","P001","P001",
+            "P002","P002","P002","P002","P002",
+            "P003","P003","P003","P003","P003",
+            "P004","P004","P004","P004","P004",
+            "P005","P005","P005","P005","P005"
         ],
 
         "Visit": [
-            1, 2, 3, 4, 5,
-            1, 2, 3, 4, 5,
-            1, 2, 3, 4, 5,
-            1, 2, 3, 4, 5,
-            1, 2, 3, 4, 5
+            1,2,3,4,5,
+            1,2,3,4,5,
+            1,2,3,4,5,
+            1,2,3,4,5,
+            1,2,3,4,5
         ],
 
         "Systolic BP (mmHg)": [
-            116, 120, 118, 122, 118,
-            124, 128, 126, 130, 126,
-            132, 135, 140, 136, 138,
-            138, 142, 147, 144, 145,
-            150, 155, 158, 162, 160
+            116,120,118,122,118,
+            124,128,126,130,126,
+            132,135,140,136,138,
+            138,142,147,144,145,
+            150,155,158,162,160
         ]
     }
 
+
     visit_df = pd.DataFrame(visit_data)
+
 
     # --------------------------------------------------
     # Patient Selection
@@ -313,40 +382,52 @@ elif page == "Healthcare Analytics":
 
     selected_patient = st.selectbox(
         "Select Patient",
-        patient_df["Patient ID"].tolist()
+        patient_df["Patient ID"].tolist(),
+        key="selected_patient"
     )
 
+
     # --------------------------------------------------
-    # Filter Selected Patient
+    # Filter Patient Visits
     # --------------------------------------------------
 
     patient_trend = visit_df[
         visit_df["Patient ID"] == selected_patient
     ]
 
+
     st.caption(
         f"Showing systolic blood pressure trend for {selected_patient}"
     )
 
-    # --------------------------------------------------
-    # Blood Pressure Trend Chart
-    # --------------------------------------------------
 
     st.line_chart(
         patient_trend,
         x="Visit",
         y="Systolic BP (mmHg)"
     )
-    
+    st.bar_chart(
+        patient_trend,
+        x="Visit",
+        y="Systolic BP (mmHg)"
+    )
+
+
+    # --------------------------------------------------
+    # Reset Filters
+    # --------------------------------------------------
+
+    st.button(
+        "Reset Filters",
+        on_click=reset_filters
+    )
+
+
 elif page == "AI / ML":
 
     st.markdown("""
     ### Artificial Intelligence & Machine Learning
-
-    This section will eventually contain educational machine-learning
-    workflows and model predictions.
     """)
-
     st.info(
         "Machine-learning functionality will be introduced later."
     )
