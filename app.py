@@ -1,5 +1,5 @@
 import streamlit as st
-
+import pandas as pd
 
 # --------------------------------------------------
 # Page Configuration
@@ -234,17 +234,110 @@ elif page == "Patient Information":
 elif page == "Healthcare Analytics":
 
     st.markdown("""
-    ### Healthcare Analytics
+    ### 📊 Clinical Metrics Dashboard
 
-    This section will later contain healthcare data analysis,
-    statistics, and visualizations.
+    Explore synthetic patient metrics and analyze vital-sign
+    trends across multiple visits.
     """)
 
     st.info(
-        "Analytics functionality will be developed in future tasks."
+        "This dashboard uses synthetic data for educational "
+        "and demonstration purposes only."
     )
 
+    # --------------------------------------------------
+    # Patient Summary Data
+    # --------------------------------------------------
 
+    patient_data = {
+        "Patient ID": ["P001", "P002", "P003", "P004", "P005"],
+        "Age": [34, 47, 58, 66, 72],
+        "Systolic BP (mmHg)": [118, 126, 138, 145, 160],
+        "Glucose (mg/dL)": [92, 105, 128, 151, 185],
+        "Readmission Risk Score": [10, 20, 35, 60, 75]
+    }
+
+    patient_df = pd.DataFrame(patient_data)
+
+    # --------------------------------------------------
+    # Clinical Metrics Table
+    # --------------------------------------------------
+
+    st.subheader("Patient Clinical Metrics")
+
+    st.dataframe(
+        patient_df,
+        use_container_width=True,
+        hide_index=True
+    )
+
+    st.divider()
+
+    # --------------------------------------------------
+    # Patient Visit History
+    # --------------------------------------------------
+
+    st.subheader("Patient Vital Sign Trend")
+
+    visit_data = {
+        "Patient ID": [
+            "P001", "P001", "P001", "P001", "P001",
+            "P002", "P002", "P002", "P002", "P002",
+            "P003", "P003", "P003", "P003", "P003",
+            "P004", "P004", "P004", "P004", "P004",
+            "P005", "P005", "P005", "P005", "P005"
+        ],
+
+        "Visit": [
+            1, 2, 3, 4, 5,
+            1, 2, 3, 4, 5,
+            1, 2, 3, 4, 5,
+            1, 2, 3, 4, 5,
+            1, 2, 3, 4, 5
+        ],
+
+        "Systolic BP (mmHg)": [
+            116, 120, 118, 122, 118,
+            124, 128, 126, 130, 126,
+            132, 135, 140, 136, 138,
+            138, 142, 147, 144, 145,
+            150, 155, 158, 162, 160
+        ]
+    }
+
+    visit_df = pd.DataFrame(visit_data)
+
+    # --------------------------------------------------
+    # Patient Selection
+    # --------------------------------------------------
+
+    selected_patient = st.selectbox(
+        "Select Patient",
+        patient_df["Patient ID"].tolist()
+    )
+
+    # --------------------------------------------------
+    # Filter Selected Patient
+    # --------------------------------------------------
+
+    patient_trend = visit_df[
+        visit_df["Patient ID"] == selected_patient
+    ]
+
+    st.caption(
+        f"Showing systolic blood pressure trend for {selected_patient}"
+    )
+
+    # --------------------------------------------------
+    # Blood Pressure Trend Chart
+    # --------------------------------------------------
+
+    st.line_chart(
+        patient_trend,
+        x="Visit",
+        y="Systolic BP (mmHg)"
+    )
+    
 elif page == "AI / ML":
 
     st.markdown("""

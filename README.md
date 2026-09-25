@@ -38,8 +38,7 @@ Machine Learning
 * GitHub
 * PowerShell
 
-Future stages may introduce Pandas, NumPy, Matplotlib, Plotly, and Scikit-learn.
-
+Pandas is now used for structured patient and visit data. Future stages may introduce NumPy, Matplotlib, Plotly, and Scikit-learn.
 ---
 
 ## 🚀 Run the Application
@@ -130,6 +129,37 @@ Gender is included as an interactive input but is not assigned arbitrary medical
 
 > The score is a programming demonstration and is not a clinically validated risk assessment.
 
+
+## 📊 Clinical Metrics Tables & Trend Charts
+
+HealthInsight was extended with an interactive Clinical Metrics Dashboard using synthetic patient data.
+
+### Implemented Features
+
+- Pandas for structured healthcare data
+- `pd.DataFrame()` for patient and visit records
+- `st.dataframe()` for an interactive patient metrics table
+- Age, systolic blood pressure, glucose, and readmission risk score
+- Multiple visit records for each patient
+- `st.selectbox()` for patient selection
+- Pandas Boolean filtering for selected patient data
+- `st.line_chart()` for blood pressure trend visualization
+- Dynamic chart updates when the selected patient changes
+
+### Data Flow
+
+```text
+Synthetic Patient Data
+        ↓
+Pandas DataFrame
+        ↓
+Clinical Metrics Table
+        ↓
+Select Patient
+        ↓
+Filter Visit History
+        ↓
+Blood Pressure Trend Chart
 ---
 
 ## 🧪 Testing
@@ -158,7 +188,8 @@ Development follows a feature-based workflow:
 main
  ├── feature/streamlit-foundation
  ├── feature/layout-navigation
- └── feature/risk-score-calculator
+ ├── feature/risk-score-calculator
+ └── feature/clinical-metrics-trends
 ```
 
 Workflow:
@@ -177,6 +208,8 @@ Feature Branch → Development → Testing
 
 HealthInsight will continue to evolve according to upcoming internship tasks.
 
-Planned areas include forms, validation, healthcare datasets, visualization, file uploads, Session State, machine learning, model evaluation, caching, and application optimization.
+Planned areas include forms, validation, file uploads, Session State,
+advanced visualization, machine learning, model evaluation, caching,
+and application optimization.
 
 The objective is to keep **learning, implementing, testing, documenting, and integrating** each concept into the same evolving project.
