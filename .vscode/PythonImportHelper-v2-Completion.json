@@ -1,0 +1,38 @@
+[
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "reset_filters",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def reset_filters():\n    st.session_state.risk_threshold = 0\n    st.session_state.selected_patient = \"P001\"\n# --------------------------------------------------\n# Page Configuration\n# --------------------------------------------------\nst.set_page_config(\n    page_title=\"HealthInsight\",\n    page_icon=\"🏥\",\n    layout=\"wide\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "page",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "page = st.sidebar.selectbox(\n    \"Navigate to\",\n    [\n        \"Home\",\n            \"Risk Score Calculator\",\n        \"Patient Information\",\n        \"Healthcare Analytics\",\n        \"AI / ML\",\n        \"Datasets\",\n        \"About\"",
+        "detail": "app",
+        "documentation": {}
+    }
+]
